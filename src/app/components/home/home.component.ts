@@ -4,6 +4,7 @@ import {filter, map, Observable, Subscription} from "rxjs";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {Country} from "../../models/countries";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ import {MatSort} from "@angular/material/sort";
 export class HomeComponent implements OnInit, OnDestroy,AfterViewInit {
   public gqlquery$:Observable<any>;
   displayedColumns: string[] = ['name', 'capital', 'continent', 'currency'];
-  dataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<Country[]>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 

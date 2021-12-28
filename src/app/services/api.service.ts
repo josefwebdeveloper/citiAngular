@@ -9,7 +9,6 @@ export function gql(stringPieces: TemplateStringsArray): string {
   providedIn: 'root'
 })
 export class ApiService {
-  // url='https://api.graphqlplaceholder.com/'
   url='https://countries.trevorblades.com/'
   constructor(private http: HttpClient) { }
   public query<T>(
@@ -24,17 +23,6 @@ export class ApiService {
       .pipe(map(d => d.data));
   }
 
-  public mutate<T>(
-    mutation: string,
-    variables?: { [key: string]: any }
-  ): Observable<any> {
-    return this.http
-      .post<{ data: T }>(`https://api.graphqlplaceholder.com/`, {
-        query: mutation,
-        variables: variables
-      })
-      .pipe(map(d => d.data));
-  }
 }
 export     const countriesQuery=gql`
    query{
