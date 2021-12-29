@@ -26,12 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy,AfterViewInit {
 
   subscription: Subscription;
   ngOnInit(): void {
-    // this.subscription= this.apiService.getCountries().pipe(filter((data) => !!data)).subscribe( data=>{
-    //   console.log(data)
-    //   }
-    // )
-    this.gqlquery$.subscribe(data=>{
-      console.log(data)
+    this.subscription = this.gqlquery$.subscribe(data=>{
       this.dataSource = new MatTableDataSource(data.countries);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -46,8 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy,AfterViewInit {
     }
   }
   ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
+
   }
   ngOnDestroy() {
   if(this.subscription){
